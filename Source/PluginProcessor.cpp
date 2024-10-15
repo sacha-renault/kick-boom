@@ -175,3 +175,28 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new KickMasterAudioProcessor();
 }
+
+//==============================================================================
+// Helper function to get all voices in the synth
+std::vector<SynthVoice*> KickMasterAudioProcessor::getVoices() {
+    int numVoices = synth.getNumVoices();
+    std::vector<SynthVoice*> voices;
+    voices.reserve(numVoices);  // Reserve space for efficiency
+
+    for (int i = 0; i < numVoices; ++i) {
+        auto voice = synth.getVoice(i);
+        if (auto* synthVoice = dynamic_cast<SynthVoice*>(voice)) {
+            voices.push_back(synthVoice);
+        }
+    }
+
+    return voices;
+}
+
+void KickMasterAudioProcessor::setAdsr(float attack, float decay, float sustain, float release) {
+    juce::ADSR::Parameters params(attack, decay, sustain, release);
+    for (SynthVoice* voice : getVoices()) {
+        voice->envelope.setParameters(params); // update all voice with new parameters
+    }
+}
+

@@ -73,7 +73,7 @@ public:
 
     void controllerMoved(int controllerNumber, int newValue) override { }
 
-private:
+//private:
     //juce::dsp::Oscillator<float> oscillator{ [](float x) { return std::sin(x); } };  // Sine wave oscillator
     juce::dsp::Oscillator<float> oscillator{ [](float x) { return x < 0.0f ? -1.0f : 1.0f; } };  // Square wave
     juce::ADSR envelope;

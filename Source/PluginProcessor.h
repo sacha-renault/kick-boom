@@ -54,8 +54,14 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    //==============================================================================
+    // To modify the voices (eg adsr, wave shape, etc ...)
+    void setAdsr(float attack, float decay, float sustain, float release);
+    void setWaveShape();
+
 private:
     juce::Synthesiser synth;
+    std::vector<SynthVoice*> getVoices();
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KickMasterAudioProcessor)
 };
