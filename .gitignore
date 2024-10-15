@@ -1,0 +1,44 @@
+# Ignore build artifacts
+Builds/
+*.app
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.log
+
+# Ignore intermediate project files
+*.VC.db
+*.VC.opendb
+*.VC.VC.db
+*.sdf
+*.ipch
+*.user
+*.DS_Store
+
+# Ignore JUCE configuration files
+JuceLibraryCode/
+
+# Ignore Xcode project files
+*.xcworkspace
+*.xcodeproj
+*.xcuserdata/
+*.xcuserdatad/
+*.mode1v3
+*.mode2v3
+*.pbxuser
+
+# Ignore Visual Studio files
+*.suo
+*.vcxproj.*
+*.props
+
+# Ignore other IDE-specific or OS-generated files
+.idea/
+.vscode/
+*.iml
+Thumbs.db
