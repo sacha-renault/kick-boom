@@ -5,7 +5,8 @@
               pluginFormats="buildAU,buildStandalone,buildVST3">
   <MAINGROUP id="Ae0ktl" name="KickMaster">
     <GROUP id="{C81B6EA9-7DD1-056D-958C-6682F5A2B930}" name="Source">
-      <FILE id="FlHvru" name="Webcomponent.h" compile="0" resource="0" file="Source/Webcomponent.h"/>
+      <FILE id="QolFDj" name="InitPluginParameters.h" compile="0" resource="0"
+            file="Source/InitPluginParameters.h"/>
       <FILE id="uZlAzq" name="SynthVoice.cpp" compile="1" resource="0" file="Source/SynthVoice.cpp"/>
       <FILE id="G6r4LK" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
       <FILE id="dVEUY2" name="PluginProcessor.cpp" compile="1" resource="0"

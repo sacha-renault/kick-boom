@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "SynthVoice.h"
+#include "InitPluginParameters.h"
 
 //==============================================================================
 /**
@@ -62,6 +63,13 @@ public:
 private:
     juce::Synthesiser synth;
     std::vector<SynthVoice*> getVoices();
+
+    //==============================================================================
+    // Init the parameters for the plugin
+    juce::AudioProcessorValueTreeState pluginParameters;
+    juce::ADSR envelope;
+    // something to store waveshape here ...
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KickMasterAudioProcessor)
 };

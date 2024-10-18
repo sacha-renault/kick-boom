@@ -15,8 +15,7 @@ KickMasterAudioProcessorEditor::KickMasterAudioProcessorEditor (KickMasterAudioP
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
-    p.setAdsr(0, 0, 1, 1);
+    setSize(400, 300);
 
     // make webbrowser as "root" of the editor, everything will be managed from html / vue
     addAndMakeVisible(webBrowser);

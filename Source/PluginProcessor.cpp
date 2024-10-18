@@ -19,7 +19,8 @@ KickMasterAudioProcessor::KickMasterAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
+    pluginParameters(*this, nullptr, "PARAMETERS", createParameterLayout())
 #endif
 {
 }
@@ -194,7 +195,13 @@ std::vector<SynthVoice*> KickMasterAudioProcessor::getVoices() {
 }
 
 void KickMasterAudioProcessor::setAdsr(float attack, float decay, float sustain, float release) {
+    // Create a adre parameter object
     juce::ADSR::Parameters params(attack, decay, sustain, release);
+
+    // Set it to plugin state
+    envelope.setParameters(params);
+
+    // Set it for every voice of the synth
     for (SynthVoice* voice : getVoices()) {
         voice->envelope.setParameters(params); // update all voice with new parameters
     }
