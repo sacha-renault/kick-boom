@@ -99,7 +99,7 @@ void KickMasterAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
 
     // Adding 8 voices for polyphony
     for (int i = 0; i < 8; ++i)  
-        synth.addVoice(new SynthVoice ()); 
+        synth.addVoice(new SynthVoice(pitchAutomation));
 
     synth.clearSounds();
     synth.addSound(new SynthSound());

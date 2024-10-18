@@ -9,7 +9,8 @@
 */
 
 #include "SynthVoice.h"
-#include "PluginProcessor.h"  // Include the processor header
+
+SynthVoice::SynthVoice(Automation& pitchAtm) : pitchAutomation(pitchAtm) { }
 
 bool SynthVoice::canPlaySound(juce::SynthesiserSound* sound)
 {
@@ -39,14 +40,15 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 {
     for (int sample = 0; sample < numSamples; ++sample)
     {
-        // Generate the current sample from the oscillator
-        float currentSample = oscillator.processSample(0.0f);
 
         // Get the pitch multiplier for the current sample
-        float pitchMultiplier = 1.0f; //pitchAutomation.getPitchMultiplier(startSample + position);
+        float pitchMultiplier = pitchAutomation.getInterpolationAtSample(position);
 
         // Adjust the oscillator frequency for pitch changes
         oscillator.setFrequency(frequency * pitchMultiplier);
+        
+        // Generate the current sample from the oscillator
+        float currentSample = oscillator.processSample(0.0f);
 
         // Apply the ADSR envelope to shape the sound over time
         currentSample *= envelope.getNextSample();

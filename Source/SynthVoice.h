@@ -10,10 +10,13 @@
 
 #pragma once
 #include <JuceHeader.h>
+#include "Automation.h"
+#include "PluginProcessor.h"  
 
 class SynthVoice : public juce::SynthesiserVoice
 {
 public:
+    SynthVoice(Automation& pitchAtm);
     bool canPlaySound(juce::SynthesiserSound* sound) override;
     void startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound*, int currentPitchWheelPosition) override;
     void stopNote(float velocity, bool allowTailOff) override;
@@ -24,8 +27,9 @@ public:
 
     juce::dsp::Oscillator<float> oscillator{ [](float x) { return std::sin(x); } };  // Sine wave oscillator
     juce::ADSR envelope;
+    Automation& pitchAutomation;
     float level;
-    float frequency;
+    float frequency = 0.0f;
     float phase = 0.0f;
     int position = 0;
 };

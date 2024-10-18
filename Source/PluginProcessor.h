@@ -12,6 +12,7 @@
 #include "SynthVoice.h"
 #include "SynthSound.h"
 #include "InitPluginParameters.h"
+#include "Automation.h"
 
 // forward decl
 class SynthVoice;
@@ -74,6 +75,7 @@ private:
     // Init the parameters for the plugin
     juce::AudioProcessorValueTreeState pluginParameters;
     juce::ADSR envelope;
+    Automation pitchAutomation;
     // something to store waveshape here ...
 
     //==============================================================================
