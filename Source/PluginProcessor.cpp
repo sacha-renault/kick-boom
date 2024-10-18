@@ -138,10 +138,17 @@ bool KickMasterAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 
 void KickMasterAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-    buffer.clear();  // Clear the audio buffer before processing
+    // Clear the audio buffer before processing
+    buffer.clear();  
 
     // Synthesiser renders the audio based on incoming MIDI
     synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+
+    // get gain parameter
+    float gain = getParameter("gain");
+    
+    // apply gain to the entire buffer
+    buffer.applyGain(gain);
 }
 
 
@@ -206,4 +213,28 @@ void KickMasterAudioProcessor::setAdsr(float attack, float decay, float sustain,
         voice->envelope.setParameters(params); // update all voice with new parameters
     }
 }
+
+void KickMasterAudioProcessor::setParameter(std::string name, float value) {
+    // Find the parameter by its ID
+    if (auto* param = pluginParameters.getParameter(name)) {
+        // Set the value of the parameter
+        param->setValueNotifyingHost(value);
+    }
+    else {
+        // Handle the case where the parameter is not found (optional)
+        jassertfalse; // For debug builds, this will show an assertion failure.
+    }
+}
+
+float KickMasterAudioProcessor::getParameter(std::string name) {
+    // Retrieve the parameter by name
+    if (auto* param = pluginParameters.getParameter(name)) {
+        return param->getValue();
+    }
+    else {
+        jassertfalse; // Parameter not found
+        return 0.0f;  // Return 0.0 if parameter is not found
+    }
+}
+
 

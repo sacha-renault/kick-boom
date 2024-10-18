@@ -59,6 +59,8 @@ public:
     // To modify the voices (eg adsr, wave shape, etc ...)
     void setAdsr(float attack, float decay, float sustain, float release);
     void setWaveShape();
+    float getParameter(std::string name);
+    void setParameter(std::string name, float value);
 
 private:
     juce::Synthesiser synth;

@@ -19,8 +19,7 @@ KickMasterAudioProcessorEditor::KickMasterAudioProcessorEditor (KickMasterAudioP
 
     // make webbrowser as "root" of the editor, everything will be managed from html / vue
     addAndMakeVisible(webBrowser);
-    webBrowser.goToURL("https://www.google.com");
-    
+    webBrowser.goToURL("https://www.google.com");    
 }
 
 KickMasterAudioProcessorEditor::~KickMasterAudioProcessorEditor()
