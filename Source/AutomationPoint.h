@@ -13,7 +13,7 @@
 struct AutomationPoint {
     static unsigned int globalId;
     unsigned int id;
-    float samplePostion;
+    float samplePosition;
     float value;
     AutomationPoint(float samplePostion, float value);
 };
