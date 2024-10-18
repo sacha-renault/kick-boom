@@ -15,10 +15,12 @@
 
 class Automation {
 public:
+    Automation(float defaultValue = 1.0f);
     float getInterpolationAtSample(int samplePosition);
     unsigned int addAutomationPoint(int position, float value);
     void removeAutomationPoint(unsigned int pointId);
 
 private:
     std::vector<AutomationPoint> automationPoints;  // Vector of automation points
+    float _default;
 };

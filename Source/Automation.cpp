@@ -10,13 +10,15 @@
 
 #include "Automation.h"
 
-#include "Automation.h"
-#include <algorithm>
+
+// custructor with default value
+Automation::Automation(float defaultValue)
+    : _default(defaultValue) { }
 
 // Get the interpolated value at a specific sample position
 float Automation::getInterpolationAtSample(int samplePosition) {
     if (automationPoints.empty()) {
-        return 0.0f;  // Return 0 if there are no points
+        return _default;  // Return 0 if there are no points
     }
 
     // If the sample position is before the first point, return the first point's value
