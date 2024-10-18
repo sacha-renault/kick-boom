@@ -12,6 +12,9 @@
 #include "SynthVoice.h"
 #include "InitPluginParameters.h"
 
+// forward decl
+class SynthVoice;
+
 //==============================================================================
 /**
 */

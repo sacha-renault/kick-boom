@@ -94,13 +94,15 @@ void KickMasterAudioProcessor::changeProgramName (int index, const juce::String&
 //==============================================================================
 void KickMasterAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
+    // Clear existing voices
     synth.clearVoices();
 
-    for (int i = 0; i < 8; ++i)  // Adding 8 voices for polyphony
-        synth.addVoice(new SynthVoice());  // Your SynthVoice class
+    // Adding 8 voices for polyphony
+    for (int i = 0; i < 8; ++i)  
+        synth.addVoice(new SynthVoice ()); 
 
     synth.clearSounds();
-    synth.addSound(new SynthSound());  // Add your SynthSound class
+    synth.addSound(new SynthSound());
     synth.setCurrentPlaybackSampleRate(sampleRate);
 }
 
