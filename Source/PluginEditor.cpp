@@ -16,6 +16,12 @@ KickMasterAudioProcessorEditor::KickMasterAudioProcessorEditor (KickMasterAudioP
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+    p.setAdsr(0, 0, 1, 1);
+
+    // make webbrowser as "root" of the editor, everything will be managed from html / vue
+    addAndMakeVisible(webBrowser);
+    webBrowser.goToURL("https://www.google.com");
+    
 }
 
 KickMasterAudioProcessorEditor::~KickMasterAudioProcessorEditor()
@@ -26,15 +32,11 @@ KickMasterAudioProcessorEditor::~KickMasterAudioProcessorEditor()
 void KickMasterAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (juce::FontOptions (15.0f));
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    g.fillAll(juce::Colours::black);
 }
 
 void KickMasterAudioProcessorEditor::resized()
 { 
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    // Set the bounds of the WebBrowserComponent to fill the window
+    webBrowser.setBounds(getLocalBounds());
 }
