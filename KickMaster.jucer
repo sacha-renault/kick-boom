@@ -5,6 +5,14 @@
               pluginFormats="buildAU,buildStandalone,buildVST3">
   <MAINGROUP id="Ae0ktl" name="KickMaster">
     <GROUP id="{C81B6EA9-7DD1-056D-958C-6682F5A2B930}" name="Source">
+      <GROUP id="{23BF9E23-D27F-B752-9372-20D8552C91D9}" name="Automations">
+        <FILE id="ycOzbk" name="Automation.cpp" compile="1" resource="0" file="Source/Automation.cpp"/>
+        <FILE id="sepKDf" name="Automation.h" compile="0" resource="0" file="Source/Automation.h"/>
+        <FILE id="LQ0WBy" name="AutomationPoint.cpp" compile="1" resource="0"
+              file="Source/AutomationPoint.cpp"/>
+        <FILE id="yLenSV" name="AutomationPoint.h" compile="0" resource="0"
+              file="Source/AutomationPoint.h"/>
+      </GROUP>
       <FILE id="j9t7q5" name="SynthSound.h" compile="0" resource="0" file="Source/SynthSound.h"/>
       <FILE id="QolFDj" name="InitPluginParameters.h" compile="0" resource="0"
             file="Source/InitPluginParameters.h"/>
