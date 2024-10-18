@@ -14,7 +14,7 @@
 struct AutomationPoint {
     static std::atomic<unsigned int> globalId;  // Static ID generator
     unsigned int id;                            // Unique ID for each AutomationPoint
-    float samplePosition;                       // Position of the point
+    int samplePosition;                         // Position of the point
     float value;                                // Value at the point
-    AutomationPoint(float samplePostion, float value);
+    AutomationPoint(int samplePostion, float value);
 };

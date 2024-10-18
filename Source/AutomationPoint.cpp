@@ -14,5 +14,5 @@
 std::atomic<unsigned int> AutomationPoint::globalId{ 0 };
 
 // every automation point are initialized with the correct values + unique id
-AutomationPoint::AutomationPoint(float samplePosition, float value) 
+AutomationPoint::AutomationPoint(int samplePosition, float value)
     : samplePosition(samplePosition), value(value), id(globalId++) { }
