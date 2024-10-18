@@ -9,11 +9,12 @@
 */
 
 #pragma once
+#include <atomic>
 
 struct AutomationPoint {
-    static unsigned int globalId;
-    unsigned int id;
-    float samplePosition;
-    float value;
+    static std::atomic<unsigned int> globalId;  // Static ID generator
+    unsigned int id;                            // Unique ID for each AutomationPoint
+    float samplePosition;                       // Position of the point
+    float value;                                // Value at the point
     AutomationPoint(float samplePostion, float value);
 };
